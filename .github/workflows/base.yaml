@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Print Something
         run: |
-          echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
+          echo "Branch-2 test"
       - name: Apply Changes
         if: ${{ inputs.is_main_pipeline }}
         run: |
