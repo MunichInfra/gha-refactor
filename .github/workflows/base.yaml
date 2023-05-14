@@ -39,7 +39,7 @@ jobs:
   PrintJob-3:
     if: ${{ inputs.is_main_pipeline }}
     needs:
-      - PrintJob-1
+      - PrintJob-2
     runs-on: ubuntu-latest
     steps:
       - name: Print Something
