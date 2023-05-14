@@ -1,4 +1,4 @@
-name: "03 IDL-QA: Infrastructure Deployment"
+name: "Workflow QA"
 on:
   workflow_dispatch:
   pull_request:
@@ -6,7 +6,6 @@ on:
     types: [opened, reopened, synchronize]
   push:
     branches: main
-
 
 env:
   environment: "qa"
