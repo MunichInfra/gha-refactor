@@ -6,6 +6,10 @@ on:
       environment:
         required: true
         type: string
+      is_main_pipeline:
+        description: "Whether this is a Main (Non-PR) Pipeline"
+        required: false
+        type: boolean
 
 jobs:
   Manage_Base_Infrastructure:
