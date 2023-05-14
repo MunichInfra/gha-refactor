@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Print Something
         run: |
-          echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
+          echo "Hello from the Job-2. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
       - name: Apply Changes
         if: ${{ inputs.is_main_pipeline }}
         run: |
