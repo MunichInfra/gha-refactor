@@ -12,7 +12,7 @@ on:
         type: boolean
 
 jobs:
-  PrintJob:
+  PrintJob-1:
     runs-on: ubuntu-latest
     steps:
       - name: Print Something
@@ -23,3 +23,13 @@ jobs:
         run: |
           echo "Applying changes (only run for Main)"
 
+  PrintJob-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Something
+        run: |
+          echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
+      - name: Apply Changes
+        if: ${{ inputs.is_main_pipeline }}
+        run: |
+          echo "Applying changes (only run for Main)"
