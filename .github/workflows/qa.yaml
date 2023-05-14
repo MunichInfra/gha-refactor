@@ -27,6 +27,7 @@ jobs:
     if: (github.event_name == 'pull_request')
     needs: Dispatch
     with:
+      environment: ${{ needs.Dispatch.outputs.environment }}
       is_main_pipeline: false
     secrets: inherit
     uses: "./.github/workflows/base.yaml"
@@ -35,6 +36,7 @@ jobs:
     if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
     needs: Dispatch
     with:
+      environment: ${{ needs.Dispatch.outputs.environment }}
       is_main_pipeline: true
     secrets: inherit
     uses: "./.github/workflows/base.yaml"
