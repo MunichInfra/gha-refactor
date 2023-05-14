@@ -24,6 +24,7 @@ jobs:
           echo "Applying changes (only run for Main)"
 
   PrintJob-2:
+    if: ${{ inputs.is_main_pipeline }}
     needs:
       - PrintJob-1
     runs-on: ubuntu-latest
@@ -37,7 +38,6 @@ jobs:
           echo "Applying changes (only run for Main)"
 
   PrintJob-3:
-    if: ${{ inputs.is_main_pipeline }}
     needs:
       - PrintJob-2
     runs-on: ubuntu-latest
