@@ -14,6 +14,6 @@ jobs:
   DeployInfra:
     with:
       environment: "qa"
-      is_main_pipeline: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
+      is_main_pipeline: ${{ (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')) }}
     secrets: inherit
     uses: "./.github/workflows/base.yaml"
