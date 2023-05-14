@@ -1,4 +1,4 @@
-name: "Step-3: Workflow QA"
+name: "Step-2: Workflow QA"
 on:
   workflow_dispatch:
   pull_request:
@@ -25,17 +25,25 @@ jobs:
   PR: # This name is kept small on purpose to improve readability because of nesting workflow-names
     if: (github.event_name == 'pull_request')
     needs: Dispatch
-    with:
-      environment: ${{ needs.Dispatch.outputs.environment }}
-      is_main_pipeline: false
-    secrets: inherit
-    uses: "./.github/workflows/base.yaml"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Something for PR
+        run: |
+          echo "Printing from Job-1"
+      - name: Apply Changes
+        if: (github.event_name == 'pull_request')
+        run: |
+          echo "Applying changes (only run for Main)"
 
   Main:
     if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
     needs: Dispatch
-    with:
-      environment: ${{ needs.Dispatch.outputs.environment }}
-      is_main_pipeline: true
-    secrets: inherit
-    uses: "./.github/workflows/base.yaml"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Something for Main
+        run: |
+          echo "Printing from Job-1"
+      - name: Apply Changes
+        if: (github.event_name == 'pull_request')
+        run: |
+          echo "Applying changes (only run for Main)"
