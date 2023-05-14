@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Print Something
         run: |
-          echo "Printing from Job-1"
+          echo "Printing from Job-1 (Branch-3)"
       - name: Apply Changes
         if: ${{ inputs.is_main_pipeline }}
         run: |
