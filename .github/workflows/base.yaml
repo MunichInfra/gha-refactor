@@ -35,3 +35,17 @@ jobs:
         if: ${{ inputs.is_main_pipeline }}
         run: |
           echo "Applying changes (only run for Main)"
+
+  PrintJob-3:
+    if: ${{ inputs.is_main_pipeline }}
+    needs:
+      - PrintJob-1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Something
+        run: |
+          echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
+      - name: Apply Changes
+        if: ${{ inputs.is_main_pipeline }}
+        run: |
+          echo "Applying changes (only run for Main)"
