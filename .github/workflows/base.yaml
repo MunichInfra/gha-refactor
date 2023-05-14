@@ -17,5 +17,5 @@ jobs:
     steps:
       - name: Print Something
         run: |
-          echo "Hello from the Base"
+          echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
 
