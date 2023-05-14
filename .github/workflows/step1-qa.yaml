@@ -18,7 +18,7 @@ jobs:
         run: |
           echo "Printing from Job-1"
       - name: Apply Changes
-        if: ${{ inputs.is_main_pipeline }}
+        if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
         run: |
           echo "Applying changes (only run for Main)"
 
@@ -31,12 +31,12 @@ jobs:
         run: |
           echo "Print Job-2"
       - name: Apply Changes
-        if: ${{ inputs.is_main_pipeline }}
+        if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
         run: |
           echo "Applying changes (only run for Main)"
 
   PrintJob-3:
-    if: ${{ inputs.is_main_pipeline }}
+    if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
     needs:
       - PrintJob-2
     runs-on: ubuntu-latest
@@ -45,6 +45,6 @@ jobs:
         run: |
           echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
       - name: Apply Changes
-        if: ${{ inputs.is_main_pipeline }}
+        if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
         run: |
           echo "Applying changes (only run for Main)"
