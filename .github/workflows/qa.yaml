@@ -12,7 +12,7 @@ env:
 
 jobs:
   Dispatch:
-    name: Setup Dynamic Environment Variables
+    name: Common Setup
     runs-on: ubuntu-latest
     outputs:
       environment: ${{ steps.set-dynamic-outputs.outputs.environment }}
