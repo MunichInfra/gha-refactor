@@ -29,7 +29,7 @@ jobs:
     with:
       is_main_pipeline: false
     secrets: inherit
-    uses: "./.github/workflows/reusable-base.yaml"
+    uses: "./.github/workflows/base.yaml"
 
   Main:
     if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
@@ -37,4 +37,4 @@ jobs:
     with:
       is_main_pipeline: true
     secrets: inherit
-    uses: "./.github/workflows/reusable-base.yaml"
+    uses: "./.github/workflows/base.yaml"
