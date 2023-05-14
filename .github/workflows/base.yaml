@@ -24,6 +24,8 @@ jobs:
           echo "Applying changes (only run for Main)"
 
   PrintJob-2:
+    needs:
+      - PrintJob-1
     runs-on: ubuntu-latest
     steps:
       - name: Print Something
