@@ -14,7 +14,7 @@ env:
 jobs:
   Dispatch:
     name: Setup Dynamic Environment Variables
-    runs-on: [self-hosted, Linux, idl-qa]
+    runs-on: ubuntu-latest
     outputs:
       environment: ${{ steps.set-dynamic-outputs.outputs.environment }}
     steps:

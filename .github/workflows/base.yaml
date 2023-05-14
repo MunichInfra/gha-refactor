@@ -9,6 +9,7 @@ on:
 
 jobs:
   Manage_Base_Infrastructure:
+    runs-on: ubuntu-latest
     steps:
       - name: Print Something
         run: |
