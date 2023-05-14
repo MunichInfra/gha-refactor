@@ -1,0 +1,16 @@
+name: "Reusable Base"
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+
+jobs:
+  Manage_Base_Infrastructure:
+    steps:
+      - name: Print Something
+        run: |
+          echo "Hello from the Base"
+
