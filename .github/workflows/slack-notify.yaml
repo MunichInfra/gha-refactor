@@ -17,13 +17,13 @@ jobs:
           # For posting a rich message using Block Kit
           payload: |
             {
-              "text": "GitHub Action build result: ${{ job.status }}\nLine-2",
+              "text": "GitHub Action build result: ${{ job.status }}\nLine-2 from text",
               "blocks": [
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "GitHub Action build result: ${{ job.status }}\nLine-2"
+                    "text": "GitHub Action build result: ${{ job.status }}\nLine-2 from block"
                   }
                 }
               ]
