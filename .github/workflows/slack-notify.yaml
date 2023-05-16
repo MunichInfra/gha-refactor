@@ -23,6 +23,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
+                    "color": "00ff00"
                     "text": "GitHub Action build result: ${{ job.status }}\nLine-2 from block"
                   }
                 }
