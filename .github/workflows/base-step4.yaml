@@ -48,7 +48,7 @@ jobs:
       - name: Apply Changes
         if: ${{ inputs.is_main_pipeline }}
         run: |
-          echo "Applying changes (only run for Main)"
+          echo "Applying changes (only run for Main)
 
   NotifyFailure:
     name: Notify Slack
