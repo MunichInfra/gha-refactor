@@ -70,7 +70,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "GitHub Action build result: ${{ join(needs.*.result, ',') }}\nWorkflow: $GITHUB_WORKFLOW"
+                    "text": "GitHub Action build result: ${{ join(needs.*.result, ',') }}\nWorkflow: ${{ GITHUB_WORKFLOW }}"
                   }
                 }
               ]
