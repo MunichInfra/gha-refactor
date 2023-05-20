@@ -44,10 +44,8 @@ jobs:
     if: ${{ always() && contains(join(needs.*.result, ','), 'failure') }}
     steps:
       - name: Send custom JSON data to Slack workflow
-        id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
-          # For posting a rich message using Block Kit
           payload: |
             {
               "text": "GitHub Action build result: ${{ join(needs.*.result, ',') }}\nLine-2 from text",
