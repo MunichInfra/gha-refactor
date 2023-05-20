@@ -53,7 +53,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "GitHub Action build result: ${{ join(needs.*.result, ',') }}\nWorkflow: ${{ github.workflow }}\nJob: ${{ github.job }}\n${{ join(matrix.*, ' - ') }} - ${{ github.event_name }}"
+                    "text": "GitHub Action build result: ${{ join(needs.*.result, ',') }}\nWorkflow: ${{ github.workflow }}\nMain: ${{ inputs.is_main_pipeline }}"
                   }
                 }
               ]
