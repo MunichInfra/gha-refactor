@@ -23,7 +23,7 @@ jobs:
         if: ${{ inputs.is_main_pipeline }}
         run: |
           echo "current_date=$(date)" >> $GITHUB_OUTPUT
-    output:
+    outputs:
       current_date: ${{ steps.get-date.outputs.current_date }}
 
   PrintJob-2:
