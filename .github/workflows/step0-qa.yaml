@@ -1,0 +1,57 @@
+name: "Step-0: Workflow QA"
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: main
+    types: [opened, reopened, synchronize]
+  push:
+    branches: main
+
+env:
+  environment: "qa"
+
+jobs:
+  PrintJob-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Something 1st Time
+        run: |
+          echo "Printing from Job-1"
+      - name: Apply Changes
+        if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
+        run: |
+          echo "Applying changes (only run for Main)"
+
+  PrintJob-2:
+    needs:
+      - PrintJob-1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Something 2nd Time
+        run: |
+          echo "Print Job-2"
+      - name: Apply Changes
+        if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
+        run: |
+          echo "Applying changes (only run for Main)"
+
+  PrintJob-3:
+    if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
+    needs:
+      - PrintJob-2
+    runs-on: ubuntu-latest
+    environment: Staging
+    steps:
+      - name: Print Something 3rd Time
+        run: |
+          echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
+          sleep 15s
+      - name: Print Something 4rd Time
+        run: |
+          sleep 15s
+          echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
+      - name: Apply Changes
+        if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
+        run: |
+          sleep 5s
+          echo "Applying changes (only run for Main)"

@@ -29,7 +29,7 @@ jobs:
       environment: ${{ needs.Dispatch.outputs.environment }}
       is_main_pipeline: false
     secrets: inherit
-    uses: "./.github/workflows/base.yaml"
+    uses: "./.github/workflows/base-step4.yaml"
 
   Main:
     if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
@@ -38,4 +38,4 @@ jobs:
       environment: ${{ needs.Dispatch.outputs.environment }}
       is_main_pipeline: true
     secrets: inherit
-    uses: "./.github/workflows/base.yaml"
+    uses: "./.github/workflows/base-step3.yaml"
