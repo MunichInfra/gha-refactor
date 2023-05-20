@@ -44,8 +44,8 @@ jobs:
     steps:
       - name: Print Something 3rd Time
         run: |
-          sleep 5s
           echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
+          sleep 10s
       - name: Print Something 4rd Time
         run: |
           sleep 5s
