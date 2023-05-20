@@ -1,4 +1,4 @@
-name: "Step-1: Workflow Live"
+name: "Step-0: Workflow Live"
 on:
   workflow_dispatch:
 
