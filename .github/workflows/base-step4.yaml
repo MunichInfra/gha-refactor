@@ -18,10 +18,14 @@ jobs:
       - name: Print Something
         run: |
           echo "Printing from Job-1"
-      - name: Apply Changes
+      - name: Get Date
+        id: get-date
         if: ${{ inputs.is_main_pipeline }}
         run: |
-          echo "Applying changes (only run for Main)"
+          echo "time_value=$(date)" >> $GITHUB_OUTPUT
+          sleep 10s
+    outputs:
+      time_value: ${{ steps.get-date.outputs.time_value }}
 
   PrintJob-2:
     needs:
@@ -34,7 +38,8 @@ jobs:
       - name: Apply Changes
         if: ${{ inputs.is_main_pipeline }}
         run: |
-          echo "Applying changes (only run for Main)
+          echo "Current time = $(date)"
+          echo "Time from last Job=${{ needs.PrintJob-1.outputs.time_value }}"
 
   NotifyFailure:
     name: Notify Slack
