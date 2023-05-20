@@ -44,8 +44,14 @@ jobs:
     steps:
       - name: Print Something 3rd Time
         run: |
+          sleep 5s
+          echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
+      - name: Print Something 4rd Time
+        run: |
+          sleep 5s
           echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
       - name: Apply Changes
         if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
         run: |
+          sleep 5s
           echo "Applying changes (only run for Main)"
