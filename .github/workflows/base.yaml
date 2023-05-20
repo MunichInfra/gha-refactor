@@ -22,10 +22,10 @@ jobs:
         id: get-date
         if: ${{ inputs.is_main_pipeline }}
         run: |
-          echo "time_step1=$(date)" >> $GITHUB_OUTPUT
+          echo "time_value=$(date)" >> $GITHUB_OUTPUT
           sleep 10s
     outputs:
-      time_step1: ${{ steps.get-date.outputs.time_step1 }}
+      time_value: ${{ steps.get-date.outputs.time_value }}
 
   PrintJob-2:
     needs:
@@ -39,4 +39,4 @@ jobs:
         if: ${{ inputs.is_main_pipeline }}
         run: |
           echo "Current time = $(date)"
-          echo "Time from last step=${{ needs.PrintJob-1.outputs.time_step1 }}"
+          echo "Time from last Job=${{ needs.PrintJob-1.outputs.time_value }}"
