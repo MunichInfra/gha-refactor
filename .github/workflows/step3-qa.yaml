@@ -22,20 +22,20 @@ jobs:
         run: |
           echo "environment=${{ env.environment }}" >> $GITHUB_OUTPUT
 
-  PR: # This name is kept small on purpose to improve readability because of nesting workflow-names
-    if: (github.event_name == 'pull_request')
-    needs: Dispatch
-    with:
-      environment: ${{ needs.Dispatch.outputs.environment }}
-      is_main_pipeline: false
-    secrets: inherit
-    uses: "./.github/workflows/base-step3.yaml"
-
   Main:
     if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
     needs: Dispatch
     with:
       environment: ${{ needs.Dispatch.outputs.environment }}
       is_main_pipeline: true
+    secrets: inherit
+    uses: "./.github/workflows/base-step3.yaml"
+
+  PR: # This name is kept small on purpose to improve readability because of nesting workflow-names
+    if: (github.event_name == 'pull_request')
+    needs: Dispatch
+    with:
+      environment: ${{ needs.Dispatch.outputs.environment }}
+      is_main_pipeline: false
     secrets: inherit
     uses: "./.github/workflows/base-step3.yaml"
