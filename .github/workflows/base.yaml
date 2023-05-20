@@ -23,7 +23,7 @@ jobs:
         if: ${{ inputs.is_main_pipeline }}
         run: |
           echo "time_step1=$(date)" >> $GITHUB_OUTPUT
-          echo "${{ steps.get-date.outputs.time_step1 }}"
+          sleep 5s
     outputs:
       time_step1: ${{ steps.get-date.outputs.time_step1 }}
 
@@ -38,4 +38,5 @@ jobs:
       - name: Apply Changes
         if: ${{ inputs.is_main_pipeline }}
         run: |
-          echo "Applying changes for date=${{ needs.PrintJob-1.outputs.time_step1 }}"
+          echo "Current time = $(date)"
+          echo "Time from last step=${{ needs.PrintJob-1.outputs.time_step1 }}"
