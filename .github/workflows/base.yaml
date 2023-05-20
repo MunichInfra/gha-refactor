@@ -18,10 +18,13 @@ jobs:
       - name: Print Something
         run: |
           echo "Printing from Job-1"
-      - name: Apply Changes
+      - name: Get Date
+        id: get-date
         if: ${{ inputs.is_main_pipeline }}
         run: |
-          echo "Applying changes (only run for Main)"
+          echo "current_date=$(date)" >> $GITHUB_OUTPUT
+    output:
+      current_date: ${{ steps.get-date.outputs.current_date }}
 
   PrintJob-2:
     needs:
@@ -34,4 +37,4 @@ jobs:
       - name: Apply Changes
         if: ${{ inputs.is_main_pipeline }}
         run: |
-          echo "Applying changes (only run for Main)"
+          echo "Applying changes for date=${{ needs.PrintJob-1.outputs.current_date }}"
