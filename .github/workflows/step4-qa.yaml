@@ -29,7 +29,7 @@ jobs:
       environment: ${{ needs.Dispatch.outputs.environment }}
       is_main_pipeline: true
     secrets: inherit
-    uses: "./.github/workflows/base-step3.yaml"
+    uses: "./.github/workflows/base-step4.yaml"
 
   PR: # This name is kept small on purpose to improve readability because of nesting workflow-names
     if: (github.event_name == 'pull_request')
@@ -38,4 +38,4 @@ jobs:
       environment: ${{ needs.Dispatch.outputs.environment }}
       is_main_pipeline: false
     secrets: inherit
-    uses: "./.github/workflows/base-step3.yaml"
+    uses: "./.github/workflows/base-step4.yaml"
