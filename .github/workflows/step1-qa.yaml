@@ -20,7 +20,7 @@ jobs:
       - name: Apply Changes
         if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
         run: |
-          echo "Applying changes (only run for Main)"
+          echo "Applying changes (Main)"
 
   PrintJob-2:
     if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
@@ -41,4 +41,4 @@ jobs:
         if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
         run: |
           sleep 5s
-          echo "Applying changes (only run for Main)"
+          echo "Applying changes (Main)"
