@@ -39,7 +39,7 @@ jobs:
         if: ${{ inputs.is_main_pipeline }}
         run: |
           echo "Current time = $(date)"
-          echo "Time from last Job=${{ needs.PrintJob-1.outputs.time_value }}"
+          echo "Time from last Job=${{ needs.PrintJob-1.outputs.time_value }}
 
   NotifyFailure:
     name: Notify Slack
