@@ -56,6 +56,20 @@ Resources:
               - s3:ListBucket
             Resource:
               - "*"
+          - Effect: Allow
+            Action:
+              - s3:GetObject
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - !Join ["/", [!GetAtt TerraformStateS3Bucket.Arn, "*"]]
+          - Effect: Allow
+            Action:
+              - dynamodb:GetItem
+              - dynamodb:PutItem
+              - dynamodb:DeleteItem
+            Resource:
+              - !GetAtt TerraformStateLockDynamoDBTable.Arn
 
   TerraformStateS3Bucket:
     Type: AWS::S3::Bucket
