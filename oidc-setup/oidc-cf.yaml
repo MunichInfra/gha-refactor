@@ -53,16 +53,9 @@ Resources:
         Statement:
           - Effect: Allow
             Action:
-              - s3:ListBucket
+              - s3:*
             Resource:
               - "*"
-          - Effect: Allow
-            Action:
-              - s3:GetObject
-              - s3:PutObject
-              - s3:DeleteObject
-            Resource:
-              - !Join ["/", [!GetAtt TerraformStateS3Bucket.Arn, "*"]]
           - Effect: Allow
             Action:
               - dynamodb:GetItem
