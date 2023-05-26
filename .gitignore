@@ -1,0 +1,11 @@
+# Terraform files and folders to ignore
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*tfplan*
+terraform/**/*.zip
+.terraform.lock.hcl
+
+# IDEs
+.vscode/
+.DS_Store
