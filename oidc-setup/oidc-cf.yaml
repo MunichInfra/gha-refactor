@@ -59,7 +59,6 @@ Resources:
 
   TerraformStateS3Bucket:
     Type: AWS::S3::Bucket
-    DeletionPolicy: Retain
     UpdateReplacePolicy: Retain
     Properties:
       BucketName: "terraform-state-farid-2023-0526"
@@ -75,3 +74,17 @@ Resources:
               SSEAlgorithm: AES256
       VersioningConfiguration:
         Status: Enabled
+
+  TerraformStateLockDynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: "terraform-state-locks"
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: LockID
+          AttributeType: S
+      KeySchema:
+        - AttributeName: LockID
+          KeyType: HASH
+      SSESpecification:
+        SSEEnabled: true
