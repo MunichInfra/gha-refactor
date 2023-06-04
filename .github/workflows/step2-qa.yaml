@@ -1,4 +1,4 @@
-name: "Step-2: Workflow QA"
+name: "Infra Deployment: FUJT"
 on:
   workflow_dispatch:
   pull_request:

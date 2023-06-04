@@ -1,4 +1,4 @@
-name: "Step-3: Workflow QA"
+name: "Infra Deployment: QA"
 on:
   workflow_dispatch:
   pull_request:

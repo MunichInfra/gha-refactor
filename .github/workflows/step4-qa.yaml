@@ -1,4 +1,4 @@
-name: "Step-4: Workflow QA"
+name: "Setup Common Resources: NonLive"
 on:
   workflow_dispatch:
   pull_request:
