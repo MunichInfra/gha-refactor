@@ -1,4 +1,4 @@
-name: "Setup Common Resources: Live"
+name: "Setup Common Resources: Live (Merge)"
 on:
   workflow_dispatch:
   pull_request:
