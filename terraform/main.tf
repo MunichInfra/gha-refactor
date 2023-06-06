@@ -12,5 +12,5 @@ terraform {
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "farid-tf-test-2023-0526"
+  bucket = "farid-tf-test-2023-0606"
 }

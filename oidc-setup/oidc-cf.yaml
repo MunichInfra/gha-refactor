@@ -68,7 +68,7 @@ Resources:
     Type: AWS::S3::Bucket
     UpdateReplacePolicy: Retain
     Properties:
-      BucketName: "terraform-state-farid-2023-0526"
+      BucketName: "terraform-state-farid-2023-0606"
       AccessControl: Private
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
