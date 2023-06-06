@@ -39,6 +39,7 @@ jobs:
       - name: Print Something
         run: |
           echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
+          sleep 10
       - name: Apply Changes
         if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
         run: |
