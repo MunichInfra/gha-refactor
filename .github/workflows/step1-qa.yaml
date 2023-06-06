@@ -33,15 +33,15 @@ jobs:
     runs-on: ubuntu-latest
     environment: Staging
     steps:
-      - name: Wait a few seconds
-        run: |
-          sleep 5
       - name: Print Something
         run: |
           echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
+      - name: Wait a few seconds
+        run: |
           sleep 10
       - name: Apply Changes
         if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
         run: |
+          sleep 10
           echo "Current time = $(date)"
           echo "Time from last Job=${{ needs.PrintJob-1.outputs.time_value }}"
