@@ -15,7 +15,7 @@ jobs:
   PrintJob-1:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Something
+      - name: Print Something 1st Time
         run: |
           echo "Printing from Job-1"
       - name: Get Date
@@ -28,9 +28,11 @@ jobs:
       time_value: ${{ steps.get-date.outputs.time_value }}
 
   PrintJob-2:
+    if: ${{ inputs.is_main_pipeline }}
     needs:
       - PrintJob-1
     runs-on: ubuntu-latest
+    environment: Staging
     steps:
       - name: Print Something
         run: |
