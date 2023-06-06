@@ -13,7 +13,6 @@ on:
 
 jobs:
   PrintJob-1:
-    if: ${{ inputs.is_main_pipeline == 'false' }} 
     runs-on: ubuntu-latest
     steps:
       - name: Print Something
