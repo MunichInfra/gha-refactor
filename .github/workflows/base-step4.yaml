@@ -23,7 +23,6 @@ jobs:
         if: ${{ inputs.is_main_pipeline }}
         run: |
           echo "time_value=$(date)" >> $GITHUB_OUTPUT
-          sleep 10s
     outputs:
       time_value: ${{ steps.get-date.outputs.time_value }}
 
