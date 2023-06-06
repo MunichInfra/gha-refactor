@@ -68,7 +68,7 @@ jobs:
             echo "Removing .terraform..."
             rm -rf .terraform
           fi
-          terraform init -reconfigure -upgrade=true -backend-config="bucket=terraform-state-farid-2023-0526" -backend-config="region=eu-central-1" -backend-config="key=infra-demo" -backend-config="dynamodb_table=terraform-state-locks"
+          terraform init -reconfigure -upgrade=true -backend-config="bucket=terraform-state-farid-2023-0606" -backend-config="region=eu-central-1" -backend-config="key=infra-demo" -backend-config="dynamodb_table=terraform-state-locks"
 
       - name: Terraform Plan
         working-directory: terraform
