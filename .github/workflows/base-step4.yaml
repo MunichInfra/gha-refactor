@@ -41,7 +41,7 @@ jobs:
           echo "Current time = $(date)"
           echo "Time from last Job=${{ needs.PrintJob-1.outputs.time_value }}"
 
-  Terraform-Deploy:
+  Terraform-Plan:
     needs:
       - PrintJob-2
     runs-on: ubuntu-latest
@@ -75,6 +75,11 @@ jobs:
         run: |
           terraform plan -out tfplan
 
+  Terraform-Apply:
+    needs:
+      - Terraform-Plan
+    runs-on: ubuntu-latest
+    steps:
       - name: Terraform Apply
         if: ${{ inputs.is_main_pipeline }}
         working-directory: terraform
