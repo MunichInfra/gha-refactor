@@ -1,4 +1,4 @@
-name: "Infra Deployment: Live (Merge)"
+name: "Step-1: Workflow Live"
 on:
   workflow_dispatch:
 
