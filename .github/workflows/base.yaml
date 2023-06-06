@@ -37,8 +37,12 @@ jobs:
       - name: Print Something
         run: |
           echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
+      - name: Wait a few seconds
+        run: |
+          sleep 10
       - name: Apply Changes
         if: ${{ inputs.is_main_pipeline }}
         run: |
+          sleep 10
           echo "Current time = $(date)"
           echo "Time from last Job=${{ needs.PrintJob-1.outputs.time_value }}"
