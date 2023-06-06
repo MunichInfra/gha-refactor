@@ -27,23 +27,9 @@ jobs:
     outputs:
       time_value: ${{ steps.get-date.outputs.time_value }}
 
-  PrintJob-2:
-    needs:
-      - PrintJob-1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print Something
-        run: |
-          echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
-      - name: Apply Changes
-        if: ${{ inputs.is_main_pipeline }}
-        run: |
-          echo "Current time = $(date)"
-          echo "Time from last Job=${{ needs.PrintJob-1.outputs.time_value }}"
-
   Terraform-Deploy:
     needs:
-      - PrintJob-2
+      - PrintJob-1
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -81,6 +67,20 @@ jobs:
         run: |
           terraform apply tfplan
 
+  DeployApps:
+    if: ${{ inputs.is_main_pipeline }}
+    needs:
+      - Terraform-Deploy
+      - PrintJob-1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Something
+        run: |
+          echo "Hello from the Base. Is-Main-Pipeline: ${{ inputs.is_main_pipeline }}"
+      - name: Apply Changes
+        run: |
+          echo "Current time = $(date)"
+          echo "Time from last Job=${{ needs.PrintJob-1.outputs.time_value }}"
 
   NotifyFailure:
     name: Notify Slack
