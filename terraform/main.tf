@@ -12,5 +12,5 @@ terraform {
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "farid-tf-test-infrademo"
+  bucket = "tw-infra-demo-0707"
 }
