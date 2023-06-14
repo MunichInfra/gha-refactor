@@ -12,7 +12,7 @@ on:
         type: boolean
 
 jobs:
-  PrintJob-1:
+  Terraform-Plan:
     runs-on: ubuntu-latest
     steps:
       - name: Print Something 1st Time
@@ -27,7 +27,7 @@ jobs:
     outputs:
       time_value: ${{ steps.get-date.outputs.time_value }}
 
-  PrintJob-2:
+  Deploy-Resources:
     if: ${{ inputs.is_main_pipeline }}
     needs:
       - PrintJob-1
