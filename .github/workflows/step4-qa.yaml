@@ -28,7 +28,7 @@ jobs:
         run: |
           echo "environment=${{ env.environment }}" >> $GITHUB_OUTPUT
 
-  Main:
+  Merge:
     if: (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
     needs: Dispatch
     with:
@@ -37,7 +37,7 @@ jobs:
     secrets: inherit
     uses: "./.github/workflows/base-step4.yaml"
 
-  PR: # This name is kept small on purpose to improve readability because of nesting workflow-names
+  PR:
     if: (github.event_name == 'pull_request')
     needs: Dispatch
     with:
