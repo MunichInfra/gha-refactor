@@ -30,7 +30,7 @@ jobs:
   Deploy-Resources:
     if: ${{ inputs.is_main_pipeline }}
     needs:
-      - PrintJob-1
+      - Terraform-Plan
     runs-on: ubuntu-latest
     environment: Staging
     steps:
